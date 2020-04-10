@@ -1,5 +1,5 @@
 //
-//  GFAlertViewController.swift
+//  AlertViewController.swift
 //  Github Followers
 //
 //  Created by Alvaro Gutierrez on 07/04/2020.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class GFAlertViewController: UIViewController {
+class AlertViewController: UIViewController {
     let alertContainer = UIView()
 
     let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let bodyLabel = GFBodyLabel(textAlignment: .center)
-    let actionButton = GFButton(backgroundColor: .systemPink)
+    let actionButton = GFButton(backgroundColor: .systemRed)
 
     private var alertTitle: String?
     private var alertMessage: String?

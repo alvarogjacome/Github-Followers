@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func presentGFAlertViewController(title: String, message: String, textButton: String) {
         DispatchQueue.main.async {
-            let alertViewController = GFAlertViewController(title: title, message: message, textButton: textButton)
+            let alertViewController = AlertViewController(title: title, message: message, textButton: textButton)
             alertViewController.modalPresentationStyle = .overFullScreen
             alertViewController.modalTransitionStyle = .crossDissolve
             self.present(alertViewController, animated: true)
