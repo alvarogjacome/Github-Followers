@@ -25,6 +25,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
 
     func set(follower: Follower) {
         userNameLabel.text = follower.login
+        avatarImageView.loadImage(from: follower.avatarUrl)
     }
 
     private func configure() {
@@ -37,7 +38,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
             avatarImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
 
-            userNameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 12),
+            userNameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 10),
             userNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             userNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             userNameLabel.heightAnchor.constraint(equalToConstant: 20)
