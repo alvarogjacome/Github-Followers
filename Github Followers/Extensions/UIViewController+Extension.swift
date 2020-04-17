@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 private var loaderView: UIView!
 
@@ -53,5 +54,11 @@ extension UIViewController {
         let emptyStateView = GFEmptyStateView(message: message)
         emptyStateView.frame = view.bounds
         view.addSubview(emptyStateView)
+    }
+
+    func presentSafariViewController(with url: URL){
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.preferredControlTintColor = .systemGreen
+        present(safariViewController, animated: true)
     }
 }
