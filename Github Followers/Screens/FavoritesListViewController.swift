@@ -73,9 +73,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favorite = favorites[indexPath.row]
-        let destinationViewController = FollowersListViewController()
-        destinationViewController.username = favorite.login
-        destinationViewController.title = favorite.login
+        let destinationViewController = FollowersListViewController(username: favorite.login)
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 
@@ -91,7 +89,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
         }
 
         if favorites.isEmpty {
-            self.showEmptyStateView(with: "Ther are no favorite users \n Add one on the followers screen", in: self.view)
+            showEmptyStateView(with: "Ther are no favorite users \n Add one on the followers screen", in: view)
         }
     }
 }

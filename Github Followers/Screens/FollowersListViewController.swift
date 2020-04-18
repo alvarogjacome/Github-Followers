@@ -21,6 +21,16 @@ class FollowersListViewController: UIViewController {
     private var page = 1
     private var moreFollowers = true
 
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.username = username
+        title = username
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()

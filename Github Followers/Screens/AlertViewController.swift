@@ -8,41 +8,37 @@
 
 import UIKit
 
-class AlertViewController: UIViewController {
+final class AlertViewController: UIViewController {
     let alertContainer = UIView()
-
     let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
     let bodyLabel = GFBodyLabel(textAlignment: .center)
     let actionButton = GFButton(backgroundColor: .systemRed)
 
-    private var alertTitle: String?
-    private var alertMessage: String?
-    private var alertButtonText: String?
-
     let padding: CGFloat = 20
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
-
-        configureContainerView()
-        configureTitleLabel()
-        configureActionButton()
-        configureBodyLabel()
-    }
 
     init(title: String, message: String, textButton: String) {
         super.init(nibName: nil, bundle: nil)
-        self.alertTitle = title
-        self.alertMessage = message
-        self.alertButtonText = textButton
+
+        configureTitleLabel(title: title)
+        configureActionButton(textButton: textButton)
+        configureBodyLabel(message: message)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureContainerView() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+
+        addContainerView()
+        addTitleView()
+        addButton()
+        addBodyLabel()
+    }
+
+    private func addContainerView() {
         view.addSubview(alertContainer)
         alertContainer.layer.borderColor = UIColor.white.cgColor
         alertContainer.layer.borderWidth = 2
@@ -58,9 +54,12 @@ class AlertViewController: UIViewController {
         ])
     }
 
-    private func configureTitleLabel() {
+    private func configureTitleLabel(title: String) {
+        titleLabel.text = title
+    }
+
+    private func addTitleView() {
         alertContainer.addSubview(titleLabel)
-        titleLabel.text = alertTitle ?? "Something went wrong"
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: alertContainer.topAnchor, constant: padding),
@@ -70,10 +69,13 @@ class AlertViewController: UIViewController {
         ])
     }
 
-    private func configureActionButton() {
-        alertContainer.addSubview(actionButton)
-        actionButton.setTitle(alertButtonText ?? "Ok", for: .normal)
+    private func configureActionButton(textButton: String) {
+        actionButton.setTitle(textButton, for: .normal)
         actionButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+    }
+
+    private func addButton() {
+        alertContainer.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: alertContainer.bottomAnchor, constant: -padding),
@@ -83,10 +85,13 @@ class AlertViewController: UIViewController {
         ])
     }
 
-    private func configureBodyLabel() {
-        alertContainer.addSubview(bodyLabel)
-        bodyLabel.text = alertMessage ?? "Unable to complete request."
+    private func configureBodyLabel(message: String) {
+        bodyLabel.text = message
         bodyLabel.numberOfLines = 4
+    }
+
+    private func addBodyLabel() {
+        alertContainer.addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([
             bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),

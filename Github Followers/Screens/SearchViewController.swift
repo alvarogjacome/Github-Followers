@@ -27,6 +27,7 @@ class SearchViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -40,9 +41,9 @@ class SearchViewController: UIViewController {
             presentGFAlertViewController(title: "Empty Username", message: "Please enter a username. We need to know who to look for. \n🥺", textButton: "Ok")
             return
         }
-        let followersListVC = FollowersListViewController()
-        followersListVC.username = usernameTextField.text
-        followersListVC.title = usernameTextField.text?.lowercased()
+        usernameTextField.resignFirstResponder()
+
+        let followersListVC = FollowersListViewController(username: usernameTextField.text!)
 
         navigationController?.pushViewController(followersListVC, animated: true)
     }
@@ -50,10 +51,12 @@ class SearchViewController: UIViewController {
     private func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")
+        logoImageView.image = Images.ghLogo
+
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
 
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
