@@ -35,15 +35,24 @@ class GFUserInfoHeaderViewController: UIViewController {
     }
 
     private func configureInterfaceElements() {
-        avatarImageView.loadImage(from: user.avatarUrl)
+        downloadImage()
         usernameLabel.text = user.login
         nameLabel.text = user.name
         locationLabel.text = user.location
         bioLabel.text = user.bio
 
         bioLabel.numberOfLines = 3
-        locationImageView.image = UIImage(systemName: SFSymbols.location)
+        locationImageView.image = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
+    }
+
+    private func downloadImage() {
+        NetworkManager.shared.downloadImage(from: user.avatarUrl, completed: { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        })
     }
 
     private func addSubviews() {

@@ -11,21 +11,20 @@ import UIKit
 class GFEmptyStateView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(message: String) {
-        super.init(frame: .zero)
+    convenience init(message: String) {
+        self.init(frame: .zero)
         configure(message: message)
     }
 
     private func configure(message: String? = nil) {
         let labelView = GFTitleLabel(textAlignment: .center, fontSize: 28)
-        let imageView = UIImageView(image: UIImage(named: "empty-state-logo"))
+        let imageView = UIImageView(image: Images.emptyStateLogo)
 
         backgroundColor = .systemBackground
 

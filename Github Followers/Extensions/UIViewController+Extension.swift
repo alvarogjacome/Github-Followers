@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-private var loaderView: UIView!
+fileprivate var loaderView: UIView!
 
 extension UIViewController {
     func presentGFAlertViewController(title: String, message: String, textButton: String) {

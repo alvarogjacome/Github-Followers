@@ -2,19 +2,17 @@
 //  AlertViewController.swift
 //  Github Followers
 //
-//  Created by Alvaro Gutierrez on 07/04/2020.
+//  Created by Álvaro Gutierrez on 07/04/2020.
 //  Copyright © 2020 alvarogjacome. All rights reserved.
 //
 
 import UIKit
 
 final class AlertViewController: UIViewController {
-    let alertContainer = UIView()
-    let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
-    let bodyLabel = GFBodyLabel(textAlignment: .center)
-    let actionButton = GFButton(backgroundColor: .systemRed)
-
-    let padding: CGFloat = 20
+    private let alertContainer = GFAlertContainerView()
+    private let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
+    private let bodyLabel = GFBodyLabel(textAlignment: .center)
+    private let actionButton = GFButton(backgroundColor: .systemRed)
 
     init(title: String, message: String, textButton: String) {
         super.init(nibName: nil, bundle: nil)
@@ -32,19 +30,14 @@ final class AlertViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
 
-        addContainerView()
-        addTitleView()
-        addButton()
-        addBodyLabel()
+        layoutAlertContainer()
+        layoutTitleLabel()
+        layoutButton()
+        layoutBodyLabel()
     }
 
-    private func addContainerView() {
+    private func layoutAlertContainer() {
         view.addSubview(alertContainer)
-        alertContainer.layer.borderColor = UIColor.white.cgColor
-        alertContainer.layer.borderWidth = 2
-        alertContainer.layer.cornerRadius = 16
-        alertContainer.backgroundColor = .systemBackground
-        alertContainer.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             alertContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -58,7 +51,9 @@ final class AlertViewController: UIViewController {
         titleLabel.text = title
     }
 
-    private func addTitleView() {
+    private func layoutTitleLabel() {
+        let padding: CGFloat = 20
+
         alertContainer.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
@@ -74,7 +69,9 @@ final class AlertViewController: UIViewController {
         actionButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
     }
 
-    private func addButton() {
+    private func layoutButton() {
+        let padding: CGFloat = 20
+
         alertContainer.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
@@ -90,7 +87,9 @@ final class AlertViewController: UIViewController {
         bodyLabel.numberOfLines = 4
     }
 
-    private func addBodyLabel() {
+    private func layoutBodyLabel() {
+        let padding: CGFloat = 20
+
         alertContainer.addSubview(bodyLabel)
 
         NSLayoutConstraint.activate([

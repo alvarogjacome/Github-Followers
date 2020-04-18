@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct UIHelper {
+enum UIHelper {
     enum Section {
         case main
     }

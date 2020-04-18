@@ -36,13 +36,17 @@ class FollowersListViewController: UIViewController {
         configureView()
         configureSearchBar()
         configureCollectionView()
-        getFollowers(page: page)
         configureDataSource()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getFollowers(page: page)
     }
 
     private func configureView() {
@@ -55,7 +59,6 @@ class FollowersListViewController: UIViewController {
     private func configureSearchBar() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
@@ -153,14 +156,13 @@ extension FollowersListViewController: UICollectionViewDelegate {
     }
 }
 
-extension FollowersListViewController: UISearchBarDelegate, UISearchResultsUpdating {
+extension FollowersListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            updateData(for: followers)
+            return
+        }
         updateData(for: followers.filter { $0.login.lowercased().contains(filter.lowercased()) })
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        updateData(for: followers)
     }
 }
 
@@ -169,9 +171,9 @@ extension FollowersListViewController: FollowerListViewControllerDelegate {
         self.username = username
         title = username
         page = 1
+        followers.removeAll()
         navigationItem.searchController?.searchBar.text = ""
         collectionView.scrollsToTop = true
-        followers.removeAll()
         updateData(for: followers)
         getFollowers(page: page)
     }
