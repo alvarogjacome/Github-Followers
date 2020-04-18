@@ -35,6 +35,7 @@ class AlertViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         self.alertTitle = title
         self.alertMessage = message
+        self.alertButtonText = textButton
     }
 
     required init?(coder: NSCoder) {

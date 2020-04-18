@@ -38,6 +38,8 @@ class FollowersListViewController: UIViewController {
     private func configureView() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
 
     private func configureSearchBar() {
@@ -90,6 +92,30 @@ class FollowersListViewController: UIViewController {
         snapshot.appendItems(followers)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
+    }
+
+    @objc private func addButtonTapped() {
+        showLoader()
+
+        NetworkManager.shared.getUser(username: username) { [weak self] result in
+            guard let self = self else { return }
+            self.hideLoader()
+            switch result {
+            case .success(let user):
+                let follower = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                PersistenceManager.updateWith(favorite: follower, actionType: .add, completed: { [weak self] error in
+                    guard let self = self else { return }
+                    guard let error = error else {
+                        self.presentGFAlertViewController(title: "Success", message: "This user was saved correctly ❤️", textButton: "Nice!")
+                        return
+                    }
+                    self.presentGFAlertViewController(title: "Oops!", message: error.rawValue, textButton: "OK")
+
+                })
+            case .failure(let error):
+                self.presentGFAlertViewController(title: "Something went wrong", message: error.rawValue, textButton: "OK")
+            }
         }
     }
 }

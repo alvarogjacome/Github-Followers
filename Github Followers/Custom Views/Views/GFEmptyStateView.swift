@@ -27,6 +27,8 @@ class GFEmptyStateView: UIView {
         let labelView = GFTitleLabel(textAlignment: .center, fontSize: 28)
         let imageView = UIImageView(image: UIImage(named: "empty-state-logo"))
 
+        backgroundColor = .systemBackground
+
         addSubview(imageView)
         addSubview(labelView)
 

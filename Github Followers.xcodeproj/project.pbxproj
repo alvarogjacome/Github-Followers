@@ -32,6 +32,8 @@
 		CCA5E6C6244A31A400B7FDCA /* GFFollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA5E6C5244A31A400B7FDCA /* GFFollowerViewController.swift */; };
 		CCA5E6C8244A39A100B7FDCA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA5E6C7244A39A100B7FDCA /* Date+Extension.swift */; };
 		CCA5E6CA244A39C600B7FDCA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA5E6C9244A39C600B7FDCA /* String+Extension.swift */; };
+		CCA5E6CC244B1BB200B7FDCA /* PersistanceFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA5E6CB244B1BB200B7FDCA /* PersistanceFollowers.swift */; };
+		CCA5E6CE244B269E00B7FDCA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA5E6CD244B269E00B7FDCA /* FavoriteTableViewCell.swift */; };
 		CCA8FDFE2444B4EB009D1258 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA8FDFD2444B4EB009D1258 /* GFEmptyStateView.swift */; };
 		CCA8FE002444D097009D1258 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA8FDFF2444D097009D1258 /* UserInfoViewController.swift */; };
 		CCF51227243B915C002FC15F /* FollowersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF51226243B915C002FC15F /* FollowersListViewController.swift */; };
@@ -68,6 +70,8 @@
 		CCA5E6C5244A31A400B7FDCA /* GFFollowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerViewController.swift; sourceTree = "<group>"; };
 		CCA5E6C7244A39A100B7FDCA /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CCA5E6C9244A39C600B7FDCA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CCA5E6CB244B1BB200B7FDCA /* PersistanceFollowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceFollowers.swift; sourceTree = "<group>"; };
+		CCA5E6CD244B269E00B7FDCA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		CCA8FDFD2444B4EB009D1258 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		CCA8FDFF2444D097009D1258 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		CCF51226243B915C002FC15F /* FollowersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				CC6E9CDF24411791003FF796 /* NetworkManager.swift */,
+				CCA5E6CB244B1BB200B7FDCA /* PersistanceFollowers.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				CCFEDA802442462100D4947B /* FollowerCollectionViewCell.swift */,
+				CCA5E6CD244B269E00B7FDCA /* FavoriteTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				CC485AE7243A5AC600C3D0D4 /* GFButton.swift in Sources */,
 				CC4FCE062449DDF0006041CF /* GFItemInfoView.swift in Sources */,
 				CC8AD43E2448D281001DD8C2 /* GFUserInfoHeaderViewController.swift in Sources */,
+				CCA5E6CE244B269E00B7FDCA /* FavoriteTableViewCell.swift in Sources */,
 				CCF51227243B915C002FC15F /* FollowersListViewController.swift in Sources */,
 				CC8BC869243C9A1500157CC9 /* GFBodyLabel.swift in Sources */,
 				CCFEDA812442462100D4947B /* FollowerCollectionViewCell.swift in Sources */,
@@ -347,6 +354,7 @@
 				CCA8FDFE2444B4EB009D1258 /* GFEmptyStateView.swift in Sources */,
 				CCFEDA7E244239F500D4947B /* GFError.swift in Sources */,
 				CC485AD1243A37F300C3D0D4 /* SceneDelegate.swift in Sources */,
+				CCA5E6CC244B1BB200B7FDCA /* PersistanceFollowers.swift in Sources */,
 				CCA5E6C2244A204B00B7FDCA /* GFItemInfoViewController.swift in Sources */,
 				CCA8FE002444D097009D1258 /* UserInfoViewController.swift in Sources */,
 				CCA5E6C8244A39A100B7FDCA /* Date+Extension.swift in Sources */,
