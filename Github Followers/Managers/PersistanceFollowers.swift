@@ -22,8 +22,7 @@ enum PersistenceManager {
     static func updateWith(favorite: Follower, actionType: persistenceActionType, completed: @escaping (GFError?) -> Void) {
         retrieveFavorites { result in
             switch result {
-            case .success(let favorites):
-                var retrieveFavorites = favorites
+            case .success(var retrieveFavorites):
 
                 switch actionType {
                 case .add:

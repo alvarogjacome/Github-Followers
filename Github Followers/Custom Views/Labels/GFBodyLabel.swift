@@ -27,6 +27,7 @@ class GFBodyLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         textColor = .secondaryLabel
         font = .preferredFont(forTextStyle: .body)
+        adjustsFontForContentSizeCategory = true
         lineBreakMode = .byTruncatingTail
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.75
